@@ -20,20 +20,21 @@ use FindBin qw/$Bin/;
 use Path::Class;
 use Text::CSV_XS;
 use QuestionsDB;
+use IO::Prompt;
 
 our $VERSION = version->new('0.0.1');
 my ($name)   = $PROGRAM_NAME =~ m{^.*/(.*?)$}mxs;
 
 my %option = (
-	out     => undef,
-	verbose => 0,
-	man     => 0,
-	help    => 0,
-	VERSION => 0,
+    out     => undef,
+    verbose => 0,
+    man     => 0,
+    help    => 0,
+    VERSION => 0,
 );
 
 if ( !@ARGV ) {
-	pod2usage( -verbose => 1 );
+    pod2usage( -verbose => 1 );
 }
 
 main();
@@ -41,39 +42,138 @@ exit 0;
 
 sub main {
 
-	Getopt::Long::Configure('bundling');
-	GetOptions(
-		\%option,
-		'out|o=s',
-		'verbose|v+',
-		'man',
-		'help',
-		'VERSION!',
-	) or pod2usage(2);
-	my $csv_file = file( shift @ARGV );
+    Getopt::Long::Configure('bundling');
+    GetOptions(
+        \%option,
+        'out|o=s',
+        'verbose|v+',
+        'man',
+        'help',
+        'VERSION!',
+    ) or pod2usage(2);
+    my $csv_file = file( shift @ARGV );
 
-	if ( $option{'VERSION'} ) {
-		print "$name Version = $VERSION\n";
-		exit 1;
-	}
-	elsif ( $option{'man'} ) {
-		pod2usage( -verbose => 2 );
-	}
-	elsif ( $option{'help'} ) {
-		pod2usage( -verbose => 1 );
-	}
+    if ( $option{'VERSION'} ) {
+        print "$name Version = $VERSION\n";
+        exit 1;
+    }
+    elsif ( $option{'man'} ) {
+        pod2usage( -verbose => 2 );
+    }
+    elsif ( $option{'help'} ) {
+        pod2usage( -verbose => 1 );
+    }
 
-	# do stuff here
-	my $db = QuestionsDB->connect('dbi:Pg:dbname=questions');
-	my $csv = Text::CSV_XS->new({ binary => 1 });
-	my $fh  = $csv_file->openr;
-	$csv->column_names( $csv->getline($fh) );
+    # do stuff here
+    my $db = QuestionsDB->connect('dbi:Pg:dbname=questions');
+    my $question_rs = $db->resultset('Question');
+    my $answer_rs   = $db->resultset('Answer');
+    my $qa_rs       = $db->resultset('QuestionAnswer');
 
-	while ( my $line = $csv->getline_hr($fh) ) {
-		warn Dumper $line;
-	}
+    $db->txn_begin();
 
-	return;
+    my $csv = Text::CSV_XS->new({ binary => 1 });
+    my $fh  = $csv_file->openr;
+    $csv->column_names( $csv->getline($fh) );
+
+    while ( my $line = $csv->getline_hr($fh) ) {
+        warn Dumper $line;
+        my $question = eval { $question_rs->search('question' => $line->{Question})->first };
+        if ( !$question ) {
+            my $category_id = get_category($db);
+            $question = $question_rs->new({
+                question    => $line->{Question},
+                category_id => $category_id,
+            });
+            $question->insert();
+        }
+
+        my $answer = $answer_rs->new({
+            answer => $line->{Answer}
+        });
+        $answer->insert();
+
+        $qa_rs->new({ question_id => $question->question_id, answer_id => $answer->answer_id })->insert;
+    }
+
+    $db->txn_commit();
+
+    return;
+}
+
+my $last;
+sub get_category {
+    my ($db) = @_;
+    my $cat_rs = $db->resultset('Category');
+    my $cat_view = $db->resultset('CategoryView');
+    my $categories = $cat_view->search();
+    my @ids = qw/n/;
+    my %map;
+    my @levels;
+
+    if ($last) {
+        push @ids, 'l';
+    }
+
+    print "Categories:\n";
+
+    while ( my $category = $categories->next ) {
+        while ( @levels >= $category->depth ) {
+            pop @levels;
+        }
+
+        my $out = $category->category_id . ' ' x ( $category->depth * 2 );
+        $out .= $category->category . "\n";
+        print $out;
+        push @ids, $category->category_id;
+        $map{ join '/', @levels, $category->category } = $category->category_id;
+
+        push @levels, $category->category;
+    }
+
+    if ( !@levels ) {
+        print "No categories found\n";
+    }
+
+    my $ids = join '|', @ids;
+    my $match = "Please select one of " . ( join ', ', @ids ) . ' ';
+    my @big = grep { length $_ > 1 } @ids;
+    my @one = @big ? () : ('-one_char');
+    my $last_txt = $last ? " or l for last chosen option" : '';
+
+    my $category_id = prompt( "Please select the category desired (or press n for a new category$last_txt) ", -require => { $match => qr/^(?:$ids)$/xms }, @one );
+    print "\n";
+
+    if ( $category_id eq 'n' ) {
+        my $name = prompt( 'Please enter the name for the category seperate levels with a slash (/): ' );
+        chomp $name;
+        my @parts = split m{/}, $name;
+        my $parent;
+        undef $category_id;
+
+        PART:
+        while ( @parts ) {
+            my $next = shift @parts;
+            $parent = $parent ? "$parent/$next" : $next;
+
+            if ( $map{$parent} ) {
+                $category_id = $map{$parent};
+                next PART;
+            }
+
+            my $new = $cat_rs->new({
+                category => $next,
+                parent_category_id => $category_id,
+            });
+            $new->insert;
+            $category_id = $new->category_id;
+        }
+    }
+    elsif ( $category_id eq 'l' ) {
+        return $last;
+    }
+
+    return $last = $category_id;
 }
 
 __DATA__
