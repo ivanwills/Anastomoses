@@ -1,0 +1,99 @@
+"Muscle group","compartment","muscle","origin","insertion","innervation","Action","joints","Flexion","extension","abduction","adduction","medial rotation","Lateral rotation","circumduction","pronation","supination","protraction","retraction","opposition","rotation","vertical plane","A-p","elevate","depress","anterior tilt"
+,,,,,,,,,,,,,,,,,,,,,,,,,
+,,"Pectoralis major","Anterior surface of sternum, first 7 costal cartilages, sternal end of 6 th rib, aponeurosis of external obliques","Lateral lip of intertubercular sulcus of humerus",,,"glenohumeral",1,,,1,1,,,,,,,,,,,,,
+,,"Pectoralis minor","anterior surface ribs 3-5
+","Coracoid process
+","Medial pectoral nerve
+",,"glenohumeral",,,,,,,,,,1,,,,,,,1,
+,,"Latissimus dorsi","Spinous processes of lower 6 thoracic vertebrae and interspinous ligs, thoracolumber fascia of the lumbar vertebrae and interspinous ligs, iliac crest, lower 3-4 ribs","floor of intertubercular sulcus","Thoracodorsal",,"arm",,1,,1,,,,,,,,,,,,,,
+,,"Deltoid","inferior edge of spine of scapula, acromion, anterior border of lateral third of clavicle","deltoid tuberosity of humerus
+","axillary nerve
+",,"glenohumeral",1,1,1,,1,1,,,,,,,,,,,,
+"rotator cuff",,"Supraspinatus","supraspinous fossa","superior facet of greater tubercle of the humerus","Suprascapular nerve
+",,"arm",,,1,,,,,,,,,,,,,,,
+"rotator cuff",,"Infraspinatus","infraspinous fossa","middle facet of greater tubercle of humerus","Suprascapular nerve ",,"arm",,,,,,1,,,,,,,,,,,,
+,,"Teres major","inferior angle of scapula","medial lip of humeral intertubercular sulcus","inferior subscapular nerve (C5-7)",,"arm",,1,,,1,,,,,,,,,,,,,
+"rotator cuff",,"Teres minor","upper 2/3 of lateral border of scapula","inferior facet","Axillary nerve",,"arm",,,,,,1,,,,,,,,,,,,
+"rotator cuff",,"Subscapularis","rib 1 at costochondrial junction","groove on inferior surface of middle third of clavicle","n. to subclavius","pulls tip of shoulder down and clavicle medially for stabilisation","arm",,,,,,,,,,,,,,,,,1,
+,,"Biceps brachii","long head – supraglenoid tubercle short head – coracoid process","radial tuberosity, bicipital aponeurosis – fascia of the ant. comp of the forearm","Musculocutaneous nerve (C5-6)",,"arm",1,,,,,,,,1,,,,,,,,,
+,,"Coracobrachialis","coracoid process","medial surface of humerus","Musculocutaneous nerve (C5-7)",,"glenohumeral",1,,,,,,,,,,,,,,,,,
+,,"Triceps brachii","Long head: infraglenoid tubercle
+Medial head: posterior surface of humerus inferior to the radial groove
+Lateral head: posterior surface of humerus superior the radial groove","olecranon","radial nerve (C6-8)","extend forearm and also extend and adduct the arm at the glenohumeral joint (long head).","elbow, glenohumeral",,1,,1,,,,,,,,,,,,,,
+,,"Brachialis","anterior surface of humerus","ulnar tuberosity","Musculocutaneous nerve (C5-7)",,"elbow ",1,,,,,,,,,,,,,,,,,
+,,"Serratus anterior","lateral surfaces of upper 9 ribs","costal surface on medial border of scapula","long thoracic nerve",,"scapula",,,,,,,,,,1,,,1,,,,,
+,,"Levator scapulae","Transverse processes C1-4","medial border of scapula from superior angle to root of spine","Dorsal scapular n., C3 – 4
+",,"scapula",,,,,,,,,,,,,,,,1,,
+,,"Rhomboid major","spinous processes T2-5","medial border from spine root to inferior angle","Dorsal scapular n.",,,,,,,,,,,,,1,,,,,1,,
+,,"Rhomboid minor","Ligamentum nuchae and spinous processes C7-T1","medial border at root of spine","Dorsal scapular n.",,"scapula",,,,,,,,,,,1,,,,,1,,
+,,"Trapezius","superior nuchal line, external occipital protuberance, ligamentum nuchae, spinous processes of C7 – T12 and supraspinous ligaments","superior edge of spine of scapula, acromion, posterior border of lateral third of clavicle","accessory n. (CNXI) and C3-4",,"scapula",,,,,,,,,,,1,,1,,,1,1,
+,,"Subclavius",,,,,"scapula",,,,,,,,,,,,,,,,,,
+,,"Pronator teres","Ulna: coronoid p. 
+Humerus: medial epicondyle, supracond. ridge ","Lateral surface of radius (mid- shaft) ","Median nerve",,"elbow ",1,,,,,,,1,,,,,,,,,,
+,,"Flexor carpi radialis (FCR)","Medial epicondyle ","Base 2nd metacarpal ","Median nerve",,"wrist",1,,1,,,,,,,,,,,,,,,
+,,"Palmaris longus (PL)","Medial epicondyle ","Flexor retinaculum and palmar aponeurosis ","Median nerve",,"wrist",1,,,,,,,,,,,,,,,,,
+,,"Flexor carpi ulnaris ","Ulnar head: olecranon and post. Border Humeral head: medial epicondyle","Pisiform, hamate, 5th metacarpal","Ulnar n. (C7,C8)",,"forearm anterior, superficial",1,,,1,,,,,,,,,,,,,,
+,,"Flexor digitorum superficialis","Humero-ulnar head: medial epicondyle and margin of the coronoid process
+Radial head: oblique line (anterior) border of Radius","Middle phalanges of the index, middle, ring and little fingers","Median nerve","Flexes proximal interphalangeal and
+metacarpophalangeal joints","forearm anterior, intermediate",,,,,,,,,,,,,,,,,,
+,,"Flexor digitorum profundus (FDP)","Anterior and medial surfaces of ulna and interosseous membrane ","Base of the distal phalanges of index, middle,ring and little fingers ","Lateral half by median nerve (anterior interosseous), medial half by ulnar nerve 
+","Flexes metacarpophalangeal and distal Interphalangeal joints of fingers 2-5","forearm anterior, deep",,,,,,,,,,,,,,,,,,
+,,"Flexor pollicis longus ","Anterior surface of radius and interosseous membrane ","Base of distal phalanx of the thumb ","Median nerve","Flexes metacarpophalangeal and Interphalangeal joint of thumb
+","forearm anterior, deep",,,,,,,,,,,,,,,,,,
+,,"Pronator quadratus","Distal anterior surface of ulna ","Distal anterior surface of radius ","Median nerve",,"forearm anterior, deep",,,,,,,,1,,,,,,,,,,
+,,"Brachioradialis","Lateral supracondylar ridge of humerus, intermusc. septum","Lateral distal end of radius","Radial n. (C5,C6)","Flexes elbow (when forearm midpronated)","elbow ",1,,,,,,,,,,,,,,,,,
+,,"Extensor carpi radialis longus ","Lateral supraepicond. Ridge of humerus, intermusc. septum ","Base metacarpal 2","Radial nerve (C5, C6) ",,"wrist",,1,1,,,,,,,,,,,,,,,
+,,"Extensor carpi radialis brevis ","Lateral epicondyle intermusc. septum ","Base of metacarpal 2 &3 ","Radial nerve (deep branch) (C7,C8) ",,"wrist",,1,1,,,,,,,,,,,,,,,
+,,"Extensor carpi ulnaris ","Lateral epicondyle, post. surface of ulna ","Base of metacarpal 5 ","Posterior  interosseous (from d.b. of radial) (C7,C8) ",,"wrist",,1,1,,,,,,,,,,,,,,,
+,,"Extensor digitorum ","Lateral epicondyle, intermusc. septum ","Base of middle and distal phalanges of medial 4 f. ","Posterior interosseous (from d.b. of radial) ","Extends wrist, and medial 4 fingers","Forearm posterior, superficial",,,,,,,,,,,,,,,,,,
+,,"Extensor digiti minimi ","Lateral epicondyle, intermusc. septum ","Distal end of little finger ","Posterior interosseous (from d.b. of radial) ","Extends little finger","Forearm posterior, superficial",,,,,,,,,,,,,,,,,,
+,,"Anconeus ","Lateral epicondyle ","Olecranon And prox. posterior ulna ","Radial nerve (C5,6) ","Abduct the ulna in Pronation, accessory extensor of elbow","Forearm posterior, superficial",,,,,,,,,,,,,,,,,,
+,,"Supinator
+","Superficial Head Lateral epicondyle, radial coll. Deep head anular Ligs Supinator crest of Ulna","Lateral surface of radius, superior to the oblique line ","Posterior interosseous nerve ","Supination","Forearm posterior, deep",,,,,,,,,,,,,,,,,,
+,,"Abductor pollicis longus ","Posterior surface of ulna, radius and interosseous membrane ","Base metacarpal 1 ","Posterior interosseous nerve ","Abducts carpometacarpal j. of thumb, extends thumb","Forearm posterior, deep",,,,,,,,,,,,,,,,,,
+,,"Extensor pollicis brevis ","Posterior surface of radius and interosseous membrane ","Base of proximal phalanx of thumb ","Posterior interosseous nerve ","Extension at Metacarpophalangeal and carpometacarpal joints of thumb","Forearm posterior, deep",,,,,,,,,,,,,,,,,,
+,,"Extensor pollicis longus ","Posterior surface of ulna and interosseous membrane ","Base of distal phalanx of thumb ","Posterior interosseous nerve ","Extends all joints of the thumb","Forearm posterior, deep",,,,,,,,,,,,,,,,,,
+,,"Extensor indicis ","Posterior surface of ulna and interosseous membrane ","Base of proximal phalanx of index finger ","Posterior interosseous nerve ","Extends index finger","Forearm posterior, deep",,,,,,,,,,,,,,,,,,
+,,"Opponens pollicis","trapezium, flexor retinaculum","Metacarpal 1","median n.","medial rotation of the thumb",,,,,,,,,,,,,,,,,,,
+,,"Abductor digiti minimi","pisiform, tendon of flexor carpi ulnaris","proximal phalanx, extensor hood of little finger","Ulnar n.  ","abducts little f. at
+metacarpophalangeal j",,,,,,,,,,,,,,,,,,,
+,,"Flexor digiti minimi brevis","hamate, flexor retinaculum","proximal phalanx of little f.","Ulnar n.  ","flexes little f. at metacarpophalangeal j",,,,,,,,,,,,,,,,,,,
+,,"palmaris brevis","palmar aponeurosis, flexor retinaculum","skin (medial margin of hand)","Ulnar n. (C7,C8)","improves grip",,,,,,,,,,,,,,,,,,,
+,,"Abductor policis brevis","scaphoid, trapezium, flexor retinaculum","proximal phalanx, extensor hood of the thumb","median n.","abducts thumb at metacarpophalangeal j",,,,,,,,,,,,,,,,,,,
+,,"Flexor policis brevis","trapezium, flexor retinaculum","proximal phalanx of the thumb","median n.","flexes thumb at metacarpophalangeal j",,,,,,,,,,,,,,,,,,,
+,,"Opponens digiti minimi","hamate, flexor retinaculum","Metacarpal 5","Ulnar n.  ","lateral rotation of the little f.",,,,,,,,,,,,,,,,,,,
+,,"Adductor pollicis","Transverse head – metacarpal 3 Oblique head – capitate, metacarpals 2 and 3 (bases)","proximal phalanx, extensor hood of the thumb","Ulnar n.  ","adducts thumb",,,,,,,,,,,,,,,,,,,
+,,"Lumbricals","tendons of flexor digitorum profundus","extensor hoods of medial 4 fingers","medial two -ulnar n.
+Lateral two – median","flex metacarpophalangeal joint while extending interphalangeal joints",,,,,,,,,,,,,,,,,,,
+,,"dorsal interossei","adjacent shafts of metacarpals","extensor hood and base of proximal phalanges of index, middle and ring fingers","Ulnar n.  ","abducts index, middle and ring fingers",,,,,,,,,,,,,,,,,,,
+,,"Palmar interossei","shafts of metacarpals","extensor hoods of thumb, index, ring and little fingers, proximal phalanx of thumb","Ulnar n.  ","adducts thumb, index, ring and little fingers",,,,,,,,,,,,,,,,,,,
+,,"Gluteus maximus","ext. surface of illim post.to posterior gluteal line, fascia of erector spinae, sacrum and coccyx, sacrotuberous lig.","iliotibial tract, gluteal tuberosity of femur","Inf. gluteal n. (L5,S1, S2)",,"hip",,1,1,,,1,,,,,,,,,,,,
+,,"Gluteus medius","ext surface of illium btw. ant. and post. gluteal lines","lateral surface of greater trochanter","sup. gluteal n.","prevents pelvic drop during walking","hip",,,1,,1,,,,,,,,,,,,,
+,,"Gluteus minimus","surface of illim btw. inf. and ant. gluteal lines","anterolaterl aspect of greater trochanter","sup. gluteal n.","prevents pelvic drop during walking",,,,1,,1,,,,,,,,,,,,,
+,,"Inferior gemellus","superior aspect of the ischial tuberosity","medial surface of greater trochanter","nerve to quadratus femoris",,"hip",,,1,,,1,,,,,,,,,,,,
+,,"Obturator externus","obturator membrane and surrounding bone (external surface)","trochanteric fossa","obturator n.",,"hip",,,,,,1,,,,,,,,,,,,
+,,"Obturator internus","obturator membrane and surronding bone","medial surface of greater trochanter","nerve to obturator internus",,"hip",,,1,,,1,,,,,,,,,,,,
+,,"Piriformis","ant. surface of sacrum","superior border of greater trochanter","branches form L5, S1, S2",,"hip",,,1,,,1,,,,,,,,,,,,
+,,"Quadratus femoris","lateral aspect of the ischial anterior to tuberosity","quadrate tubercle on the intertrochanteric crest"," nerve to quadratus femoris",,"hip",,,,,,1,,,,,,,,,,,,
+,,"Superior gemellus","ischial spine","medial surface of greater trochanter","nerve to obturator internus",,"hip",,,1,,,1,,,,,,,,,,,,
+,"Anterior thigh","psoas major","bodies and transverse processes T12 – L5 and intervertebral discs","lesser trochanter","L1, L2, L3",,"hip",1,,,,,,,,,,,,,,,,,
+,"Anterior thigh","iliacus","iliac fossa","lesser trochanter","femoral n.",,"hip",1,,,,,,,,,,,,,,,,,1
+,"Anterior thigh","sartorius","ant. sup. illiac spine","medial surface of tibia (inferomedial to tibial tuberosity)","femoral n.","flex thigh (at hip) and leg (at
+Knee)","hip",1,,1,,,1,,,,,,,,,,,,
+,,,,,,,"knee",1,,,,,,,,,,,,,,,,,
+"quadriceps femoris","Anterior thigh","rectus femoris","straight head from AIIS, reflected head superior to acetabulum","tibial tuberosity (via quadriceps femoris tendon and patellar lig.)","femoral n.",,"hip",1,,,,,,,,,,,,,,,,,
+,,,,,,,"knee",,1,,,,,,,,,,,,,,,,
+"quadriceps femoris","Anterior thigh","vastus lateralis","intertrochanteric line, greater trochanter, gluteal tuberosity, linea aspera","tibial tuberosity (via quadriceps femoris tendon and patellar lig.)","femoral n.",,"knee",,1,,,,,,,,,,,,,,,,
+"quadriceps femoris","Anterior thigh","vastus medialis","intertrochanteric line, linea Aspera, medial supracondylar line","tibial tuberosity (via quadriceps femoris tendon and patellar lig.). Medial border of patella","femoral n.",,"knee",,1,,,,,,,,,,,,,,,,
+"quadriceps femoris","Anterior thigh","vastus intermedius","upper anterior and lateral femur","tibial tuberosity (via quadriceps femoris tendon and patellar lig.)","femoral n.",,"knee",,1,,,,,,,,,,,,,,,,
+,"Anterior thigh","tensor fasciae latae","iliac crest between ASIS and tuberculum","fascia lata","superior gluteal n.","stabilises the knee in extension","knee",,,,,,,,,,,,,,,,,,
+,"medial thigh","adductor magnus",,,,,,,,,,,,,,,,,,,,,,,
+,"medial thigh","adductor longus",,,,,,,,,,,,,,,,,,,,,,,
+,"medial thigh","adductor brevis",,,,,,,,,,,,,,,,,,,,,,,
+,"medial thigh","pectineus",,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,
+,"medial thigh","gracilis","body of pubis, ischiopubic ramus","medial proximal shaft of tibia","obturator n.",,"hip",,,,,,,,,,,,,,,,,,
+,,,,,,,"knee",,,,,,,,,,,,,,,,,,
+,"posterior thigh","biceps femoris",,,,,,,,,,,,,,,,,,,,,,,
+,"posterior thigh","semitendinosus ",,,,,,,,,,,,,,,,,,,,,,,
+,"posterior thigh","semimembranosus",,,,,,,,,,,,,,,,,,,,,,,
