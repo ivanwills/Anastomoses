@@ -1,0 +1,23 @@
+[% USE HTML -%]
+[% USE Dumper -%]
+
+<h1>Questions</h1>
+[% FOREACH question = questions %]
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">[% question.question %]</td>
+		</tr>
+	</thead>
+	<tbody>
+	[%- FOREACH answer = question.answers %]
+		<tr>
+			<td><input type="radio" name="q[% question.question_id %]" value="[% answer.answer_id %]" /></td>
+			<td>[% answer.answer %]</td>
+		</tr>
+	[% END %]
+</table>
+[% END %]
+<pre>
+[% Dumper.dump_html(questions) %]
+</pre>

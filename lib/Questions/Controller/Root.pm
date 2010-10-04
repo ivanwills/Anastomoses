@@ -30,7 +30,7 @@ sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
     # Hello World
-    $c->response->body( $c->welcome_message );
+    $c->forward('/list');
 }
 
 =head2 default
@@ -51,7 +51,37 @@ Attempt to render a view, if needed.
 
 =cut
 
-sub end : ActionClass('RenderView') {}
+sub end : ActionClass('RenderView') {
+    my ( $self, $c ) = @_;
+
+    # Don't render if someone gave us body.
+    return if $c->response->body || $c->response->status != 200;
+
+    # No point populating data if we're just going to do a redirect
+    if ( !$c->response->redirect ) {
+
+        if (($c->request->header('Accept') &&
+             $c->request->header('Accept') =~ /application\/json/io)
+                ||
+            ($c->request->param('output') &&
+             lc($c->request->param('output')) eq 'json')) {
+
+            my $callback;
+            if ( $c->request->param('callback')
+                && $c->request->param('callback') =~ /^[a-z0-9_]+$/ois
+            ) {
+                $callback = $c->request->param('callback');
+            }
+
+            $c->detach('Questions::View::JSON', [ $callback ]);
+            return;
+        }
+
+        return $c->forward('Questions::View::TT');
+    }
+
+    return;
+}
 
 =head1 AUTHOR
 

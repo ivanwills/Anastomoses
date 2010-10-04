@@ -16,7 +16,15 @@ use Catalyst qw/
     -Debug
     ConfigLoader
     Static::Simple
+
+    StackTrace
+
+    Session
+    Session::Store::FastMmap
+    Session::State::Cookie
+
 /;
+#    Log::Log4Perl
 
 extends 'Catalyst';
 
@@ -36,9 +44,23 @@ __PACKAGE__->config(
     name => 'Questions',
     # Disable deprecated behavior needed by old applications
     disable_component_resolution_regex_fallback => 1,
-	'Plugin::ConfigLoader' => {
-		file => 'questions.conf'
-	},
+    'Plugin::ConfigLoader' => {
+        file => 'questions.conf'
+    },
+    'View::TT' => {
+        # any TT configurations items go here
+        INCLUDE_PATH       => [
+          __PACKAGE__->path_to( 'templates' ),
+        ],
+        TEMPLATE_EXTENSION => '.html',
+        CATALYST_VAR       => 'c',
+        TIMER              => 0,
+        # Not set by default
+        #PRE_PROCESS        => 'config/main',
+        WRAPPER            => 'base.html',
+        #ERROR              => 'error.html'
+    },
+
 );
 
 # Start the application

@@ -24,7 +24,18 @@ Catalyst Controller.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body('Matched Questions::Controller::List in List.');
+    my $categories = $c->model('QuestionsDB')->resultset('CategoryView');
+    my %categories;
+    my $current;
+    $c->stash->{categories} = [];
+
+    while ( my $category = $categories->next ) {
+        push @{ $c->stash->{categories} }, $category;
+    }
+
+    #$c->stash->{template} = "list/index.html";
+
+    return;
 }
 
 

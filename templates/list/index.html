@@ -1,0 +1,36 @@
+[% USE HTML -%]
+<h1>Categories</h1>
+
+<ul class="category">
+[%- depth = 1 %]
+[%- FOREACH category = categories %]
+    [%- IF depth < category.depth %]
+        <ul>
+            <li>
+    [%- ELSIF depth > category.depth %]
+            </li>
+        [%- WHILE depth > category.depth %]
+            [%- depth = depth - 1 %]
+        </ul>
+        [%- END %]
+            <li>
+    </li>
+    [%- ELSE %]
+    </li>
+    <li>
+    [%- END %]
+    [%- depth = category.depth %]
+    [%- IF category.question_count -%]
+        <a href="[% c.uri_for('/question') %]?category_id=[% HTML.escape(category.category_id) %]">
+    [%- END -%]
+    [% HTML.escape(category.category) %]
+    [%- IF category.question_count -%]
+        </a>
+    [%- END %] ([% category.question_count %])
+[%- END %]
+    </li>
+[%- WHILE depth > 1 %]
+    [%- depth = depth - 1 %]
+        </ul>
+[%- END %]
+</ul>
