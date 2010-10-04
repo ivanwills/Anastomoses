@@ -4,7 +4,7 @@ use strict;
 use base 'Catalyst::Model::DBIC::Schema';
 
 __PACKAGE__->config(
-	schema_class => 'QuestionsDB',
+    schema_class => 'QuestionsDB',
 #    schema_class => 'create=static',
 #
 #    connect_info => {

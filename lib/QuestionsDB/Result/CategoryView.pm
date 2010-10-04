@@ -8,6 +8,7 @@ use warnings;
 
 use base 'DBIx::Class::Core';
 
+__PACKAGE__->load_components("InflateColumn::DateTime");
 
 =head1 NAME
 
@@ -34,6 +35,11 @@ __PACKAGE__->table("category_view");
   data_type: 'integer'
   is_nullable: 1
 
+=head2 question_count
+
+  data_type: 'bigint'
+  is_nullable: 1
+
 =head2 depth
 
   data_type: 'integer'
@@ -58,6 +64,8 @@ __PACKAGE__->add_columns(
   { data_type => "character varying", is_nullable => 1 },
   "parent_category_id",
   { data_type => "integer", is_nullable => 1 },
+  "question_count",
+  { data_type => "bigint", is_nullable => 1 },
   "depth",
   { data_type => "integer", is_nullable => 1 },
   "path",
@@ -67,8 +75,8 @@ __PACKAGE__->add_columns(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-09-28 18:17:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wGs1fvaoLNOYoKyuVRdhNw
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-03 21:12:20
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NhhLhvs0uWwEtzG8zTRcXw
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration
