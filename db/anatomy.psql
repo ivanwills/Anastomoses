@@ -1,0 +1,10 @@
+
+\i db/sql/anatomy/movement.sql
+\i db/sql/anatomy/nerve.sql
+\i db/sql/anatomy/region.sql
+\i db/sql/anatomy/joint.sql    --                      nerve, movement, feature
+\i db/sql/anatomy/muscle.sql   -- joint, region,       nerve, movement
+\i db/sql/anatomy/bone.sql     -- joint, region
+\i db/sql/anatomy/feature.sql  -- joint, region, bone, nerve
+\i db/sql/anatomy/vascular.sql --        region
+
