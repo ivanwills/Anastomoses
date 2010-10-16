@@ -1,0 +1,104 @@
+
+.outer {
+	width: 1024px;
+	margin: 0 auto;
+}
+
+.inner {
+	background-color: rgb(228,228,255);
+    padding: 5px;
+}
+
+.head {
+	width: 1014px;
+	height: 30px;
+	margin: 0px;
+	background-color: rgb(32,32,128);
+	color: white;
+	font-family: sans-serif;
+	padding: 0 5px;
+}
+
+.head ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+.head ul li {
+	float: left;
+	border-right: 1px solid grey;
+	
+}
+.head ul li a {
+	text-decoration: none;
+	color: white;
+	padding: 5px;
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+.footer {
+	text-align: center;
+	font-size: 0.8em;
+	padding: 10px 0;
+	font-family: sans-serif;
+}
+
+table.c1 {
+	display: table;
+}
+
+table.question {
+	margin: 10px;
+	background-color: rgb(210, 255, 210);
+	width: 600px;
+	display: none;
+    border: 1px solid silver;
+}
+
+table.question th,
+table.question td {
+	background-color: rgb(170, 220, 170);
+	margin: 3px;
+	padding: 5px;
+}
+
+table.question td {
+	width: 24px;
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: 2px 2px;
+}
+table.question td.tick {
+	background-image: url(/images/tick.png);
+}
+table.question td.cross {
+	background-image: url(/images/cross.png);
+}
+
+table.question td + td {
+	width: 550px;
+	background-image: none;
+}
+
+table.stage {
+	width: 600px;
+	margin: 0px 10px;
+	padding: 0px 1px;
+}
+
+table.next {
+	display: none;
+	width: 600px;
+	margin: 0px 10px;
+	padding: 0px 1px;
+}
+
+table.next td.next {
+	text-align: right;
+}
+
+table.next td.prev {
+	text-align: left;
+}

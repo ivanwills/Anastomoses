@@ -1,23 +1,46 @@
 [% USE HTML -%]
 [% USE Dumper -%]
+[% count = 1 %]
 
-<h1>Questions</h1>
+<h1>Questions - [% category %]</h1>
+<form id="questions"/>
 [% FOREACH question = questions %]
-<table>
-	<thead>
-		<tr>
-			<th colspan="2">[% question.question %]</td>
-		</tr>
-	</thead>
-	<tbody>
+	<table class="question c[% count %]">
+		<thead>
+			<tr>
+				<th colspan="2">[% question.question %]</td>
+			</tr>
+		</thead>
+		<tbody class="c[% count %]">
 	[%- FOREACH answer = question.answers %]
-		<tr>
-			<td><input type="radio" name="q[% question.question_id %]" value="[% answer.answer_id %]" /></td>
-			<td>[% answer.answer %]</td>
-		</tr>
+			<tr>
+				<td><input type="radio" class="answer [% answer.answer_id == question.answer_id %]" name="q[% question.question_id %]" value="[% answer.answer_id %]" /></td>
+				<td>[% answer.answer %]</td>
+			</tr>
 	[% END %]
-</table>
+	</table>
+	<table class="next c[% count %]">
+		<tbody>
+			<tr>
+				<td class="prev">
+					<input type="button" id="prev[% count %]" class="prev c[% count %]" value="<< Previous" />
+				</td>
+				<td class="next">
+					<input type="button" id="next[% count %]" class="next c[% count %]" value="Next >>" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+[% count = count + 1 -%]
 [% END %]
-<pre>
-[% Dumper.dump_html(questions) %]
-</pre>
+	<table class="stage">
+		<tbody>
+			<tr>
+				<td>You have <span class="score">0</span> of <span class="attempted">1</span> answers correct (<span class="percent">0%</span>)</td>
+			</tr>
+			<tr>
+				<td>Question <span class="count">1</span> of <span class="total">[% count - 1 %]</span></td>
+			</tr>
+		</tbody>
+	</table>
+</form>

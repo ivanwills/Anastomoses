@@ -12,18 +12,8 @@
 		<meta name="description" content="" />
 		<meta name="keywords"    content="" />
 		<link href="/css/styles.css" rel="stylesheet" type="text/css" media="screen, print" />
-		<style type="text/css">
-		<!--/* <![CDATA[ */
-
-		/* ]]> */-->
-		</style>
 		<script type="text/javascript" src="/js/jquery.js"></script>
 		<script type="text/javascript" src="/js/code.js"></script>
-		<script type="text/javascript">
-		<!--/* <![CDATA[ */
-
-		/* ]]> */-->
-		</script>
 	</head>
 	<body>
 
@@ -31,13 +21,14 @@
 		<div class="head">
 			<div class="menu">
 				<ul>
-					<li>Menu1</li>
-					<li>Menu2</li>
+					<li><a href="/list/">Categories</a></li>
+					<li><a href="/preferences/">Preferences</a></li>
 				</ul>
 			</div>
 		</div>
-		[% content %]
-
+		<div class="inner">
+			[% content %]
+		</div>
 		<div class="footer">
 			Copyright (c) 2010 Ivan Wills & Susan Abel
 		</div>
