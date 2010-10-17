@@ -37,6 +37,12 @@ __PACKAGE__->table("answer");
   data_type: 'character varying'
   is_nullable: 1
 
+=head2 answer_truth
+
+  data_type: 'boolean'
+  default_value: true
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -51,6 +57,8 @@ __PACKAGE__->add_columns(
   { data_type => "character varying", is_nullable => 0 },
   "answer_description",
   { data_type => "character varying", is_nullable => 1 },
+  "answer_truth",
+  { data_type => "boolean", default_value => \"true", is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("answer_id");
 __PACKAGE__->add_unique_constraint("answer_answer_key", ["answer"]);
@@ -73,8 +81,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-03 21:12:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kCHjL0S40oNSDI0vBSPbVw
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-16 17:49:16
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yNxSRVpXmXTFCTL1l2wvmQ
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

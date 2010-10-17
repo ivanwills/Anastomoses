@@ -1,5 +1,5 @@
 
-CREATE SCHEMA anatomy;
+-- CREATE SCHEMA anatomy;
 
 \i sql/anatomy/movement.sql
 \i sql/anatomy/nerve.sql

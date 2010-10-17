@@ -1,0 +1,9 @@
+
+DROP TABLE vascular;
+DROP TABLE feature ;
+DROP TABLE joint   ;
+DROP TABLE bone.s  ;
+DROP TABLE muscle  ;
+DROP TABLE region  ;
+DROP TABLE nerve   ;
+DROP TABLE movement;
