@@ -33,12 +33,6 @@ __PACKAGE__->table("joint");
   is_foreign_key: 1
   is_nullable: 1
 
-=head2 movement_id
-
-  data_type: 'integer'
-  is_foreign_key: 1
-  is_nullable: 1
-
 =head2 feature_id
 
   data_type: 'integer'
@@ -71,8 +65,6 @@ __PACKAGE__->add_columns(
     sequence          => "joint_joint_id_seq",
   },
   "nerve_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
-  "movement_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "feature_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
@@ -117,26 +109,6 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 movement
-
-Type: belongs_to
-
-Related object: L<QuestionsDB::Result::Movement>
-
-=cut
-
-__PACKAGE__->belongs_to(
-  "movement",
-  "QuestionsDB::Result::Movement",
-  { movement_id => "movement_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
-);
-
 =head2 feature
 
 Type: belongs_to
@@ -177,6 +149,21 @@ __PACKAGE__->belongs_to(
   },
 );
 
+=head2 joint_movements
+
+Type: has_many
+
+Related object: L<QuestionsDB::Result::JointMovement>
+
+=cut
+
+__PACKAGE__->has_many(
+  "joint_movements",
+  "QuestionsDB::Result::JointMovement",
+  { "foreign.joint_id" => "self.joint_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 muscles
 
 Type: has_many
@@ -193,8 +180,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-17 19:59:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rwdfyFSU8p3eTSBInpHetQ
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-19 20:04:19
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PDtNL1dyfykD3LZDzHXiVg
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

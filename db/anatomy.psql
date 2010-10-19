@@ -4,9 +4,11 @@
 \i sql/anatomy/movement.sql
 \i sql/anatomy/nerve.sql
 \i sql/anatomy/region.sql
-\i sql/anatomy/joint.sql    --                      nerve, movement, feature
-\i sql/anatomy/muscle.sql   -- joint, region,       nerve, movement
-\i sql/anatomy/bone.sql     -- joint, region
-\i sql/anatomy/feature.sql  -- joint, region, bone, nerve
-\i sql/anatomy/vascular.sql --        region
+\i sql/anatomy/joint.sql           --                      nerve, movement, feature
+\i sql/anatomy/joint_movement.sql  -- joint                       movement
+\i sql/anatomy/muscle.sql          -- joint, region,       nerve
+\i sql/anatomy/muscle_movement.sql --                             movement, muscle
+\i sql/anatomy/bone.sql            -- joint, region
+\i sql/anatomy/feature.sql         -- joint, region, bone, nerve
+\i sql/anatomy/vascular.sql        --        region
 

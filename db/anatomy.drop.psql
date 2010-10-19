@@ -1,9 +1,11 @@
 
-DROP TABLE vascular;
-DROP TABLE feature ;
-DROP TABLE joint   ;
-DROP TABLE bone.s  ;
-DROP TABLE muscle  ;
-DROP TABLE region  ;
-DROP TABLE nerve   ;
-DROP TABLE movement;
+DROP TABLE IF EXISTS vascular        CASCADE;
+DROP TABLE IF EXISTS feature         CASCADE;
+DROP TABLE IF EXISTS joint_movement  CASCADE;
+DROP TABLE IF EXISTS joint           CASCADE;
+DROP TABLE IF EXISTS bone            CASCADE;
+DROP TABLE IF EXISTS muscle_movement CASCADE;
+DROP TABLE IF EXISTS muscle          CASCADE;
+DROP TABLE IF EXISTS region          CASCADE;
+DROP TABLE IF EXISTS nerve           CASCADE;
+DROP TABLE IF EXISTS movement        CASCADE;

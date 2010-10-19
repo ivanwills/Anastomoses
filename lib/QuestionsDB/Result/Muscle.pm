@@ -27,6 +27,11 @@ __PACKAGE__->table("muscle");
   is_nullable: 0
   sequence: 'muscle_muscle_id_seq'
 
+=head2 compartment
+
+  data_type: 'character varying'
+  is_nullable: 1
+
 =head2 joint_id
 
   data_type: 'integer'
@@ -34,12 +39,6 @@ __PACKAGE__->table("muscle");
   is_nullable: 1
 
 =head2 nerve_id
-
-  data_type: 'integer'
-  is_foreign_key: 1
-  is_nullable: 1
-
-=head2 movement_id
 
   data_type: 'integer'
   is_foreign_key: 1
@@ -86,11 +85,11 @@ __PACKAGE__->add_columns(
     is_nullable       => 0,
     sequence          => "muscle_muscle_id_seq",
   },
+  "compartment",
+  { data_type => "character varying", is_nullable => 1 },
   "joint_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "nerve_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
-  "movement_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "muscle",
   { data_type => "character varying", is_nullable => 0 },
@@ -108,26 +107,6 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("muscle_id");
 
 =head1 RELATIONS
-
-=head2 movement
-
-Type: belongs_to
-
-Related object: L<QuestionsDB::Result::Movement>
-
-=cut
-
-__PACKAGE__->belongs_to(
-  "movement",
-  "QuestionsDB::Result::Movement",
-  { movement_id => "movement_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
-);
 
 =head2 joint
 
@@ -189,9 +168,24 @@ __PACKAGE__->belongs_to(
   },
 );
 
+=head2 muscle_movements
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-17 19:59:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pVrXigDzxSHOnv3SXXrWPg
+Type: has_many
+
+Related object: L<QuestionsDB::Result::MuscleMovement>
+
+=cut
+
+__PACKAGE__->has_many(
+  "muscle_movements",
+  "QuestionsDB::Result::MuscleMovement",
+  { "foreign.muscle_id" => "self.muscle_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-18 07:53:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:W8agdggu4dx+Ugc0QzvwFw
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

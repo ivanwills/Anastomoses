@@ -49,39 +49,39 @@ __PACKAGE__->set_primary_key("movement_id");
 
 =head1 RELATIONS
 
-=head2 joints
+=head2 joint_movements
 
 Type: has_many
 
-Related object: L<QuestionsDB::Result::Joint>
+Related object: L<QuestionsDB::Result::JointMovement>
 
 =cut
 
 __PACKAGE__->has_many(
-  "joints",
-  "QuestionsDB::Result::Joint",
+  "joint_movements",
+  "QuestionsDB::Result::JointMovement",
   { "foreign.movement_id" => "self.movement_id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 muscles
+=head2 muscle_movements
 
 Type: has_many
 
-Related object: L<QuestionsDB::Result::Muscle>
+Related object: L<QuestionsDB::Result::MuscleMovement>
 
 =cut
 
 __PACKAGE__->has_many(
-  "muscles",
-  "QuestionsDB::Result::Muscle",
+  "muscle_movements",
+  "QuestionsDB::Result::MuscleMovement",
   { "foreign.movement_id" => "self.movement_id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-17 19:59:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6N3kbe+I9SnjEd5U3lOyjA
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-19 20:04:19
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gWyScKRAnHRBAZI7OIadpQ
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

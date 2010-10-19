@@ -4,9 +4,32 @@
 
 CREATE TABLE muscle (
     muscle_id    SERIAL PRIMARY KEY,
+    compartment  varchar CHECK(
+        compartment IN (
+            'adductor tubercle',
+            'anterior arm',
+            'anterior axioappendicular',
+            'anterior intermediate forearm',
+            'anterior superficial forearm',
+            'anterior thigh',
+            'deep anterior forearm',
+            'deep posterior axioappendicular',
+            'gluteal',
+            'hypothenar intrinsic',
+            'intrinsic',
+            'intrinsic hand',
+            'medial thigh',
+            'posterior arm',
+            'posterior deep forearm',
+            'posterior superficial forearm',
+            'posterior thigh',
+            'scapulohumeral',
+            'superficial posterior axioappendicular',
+            'thenar intrinsic'
+        )
+    ),
     joint_id     INTEGER REFERENCES joint   (joint_id   ),
     nerve_id     INTEGER REFERENCES nerve   (nerve_id   ),
-    movement_id  INTEGER REFERENCES movement(movement_id),
     muscle       varchar NOT NULL,
     muscle_group varchar,
     origin       varchar,
@@ -17,9 +40,9 @@ CREATE TABLE muscle (
 
 COMMENT ON TABLE  muscle              IS '';
 COMMENT ON COLUMN muscle.muscle_id    IS '';
+COMMENT ON COLUMN muscle.compartment  IS '';
 COMMENT ON COLUMN muscle.joint_id     IS '';
 COMMENT ON COLUMN muscle.nerve_id     IS '';
-COMMENT ON COLUMN muscle.movement_id  IS '';
 COMMENT ON COLUMN muscle.muscle       IS '';
 COMMENT ON COLUMN muscle.muscle_group IS '';
 COMMENT ON COLUMN muscle.origin       IS '';

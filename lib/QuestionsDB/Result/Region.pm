@@ -32,7 +32,7 @@ __PACKAGE__->table("region");
   data_type: 'character varying'
   is_nullable: 1
 
-=head2 praent_region_id
+=head2 parent_region_id
 
   data_type: 'integer'
   is_foreign_key: 1
@@ -50,7 +50,7 @@ __PACKAGE__->add_columns(
   },
   "region",
   { data_type => "character varying", is_nullable => 1 },
-  "praent_region_id",
+  "parent_region_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("region_id");
@@ -102,7 +102,7 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 praent_region
+=head2 parent_region
 
 Type: belongs_to
 
@@ -111,9 +111,9 @@ Related object: L<QuestionsDB::Result::Region>
 =cut
 
 __PACKAGE__->belongs_to(
-  "praent_region",
+  "parent_region",
   "QuestionsDB::Result::Region",
-  { region_id => "praent_region_id" },
+  { region_id => "parent_region_id" },
   {
     is_deferrable => 1,
     join_type     => "LEFT",
@@ -133,7 +133,7 @@ Related object: L<QuestionsDB::Result::Region>
 __PACKAGE__->has_many(
   "regions",
   "QuestionsDB::Result::Region",
-  { "foreign.praent_region_id" => "self.region_id" },
+  { "foreign.parent_region_id" => "self.region_id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
@@ -153,8 +153,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-17 19:59:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:xl+lJyOzMgmt2g0a8AF3aQ
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-17 21:36:43
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MUHWtcyKTSDlv/oQ4jFKYA
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

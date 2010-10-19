@@ -19,11 +19,11 @@ CREATE TABLE feature (
         ),
     feature_subtype    varchar CHECK(
             feature_subtype IN (
-                'fossa'
-                'process'
-                'facet'
-                'tubercle'
-                'tuberosity'
+                'fossa',
+                'process',
+                'facet',
+                'tubercle',
+                'tuberosity',
                 'anastomoses',
                 'notch',
                 'labrum'
