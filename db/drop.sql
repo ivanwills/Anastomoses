@@ -1,6 +1,7 @@
 
-DROP TABLE question_answer;
-DROP TABLE category_view;
-DROP TABLE question;
-DROP TABLE answer;
-DROP TABLE category;
+DROP TABLE IF EXISTS question_template;
+DROP TABLE IF EXISTS question_answer;
+DROP TABLE IF EXISTS category_view;
+DROP TABLE IF EXISTS question;
+DROP TABLE IF EXISTS answer;
+DROP TABLE IF EXISTS category;

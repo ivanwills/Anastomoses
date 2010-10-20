@@ -5,6 +5,7 @@
 CREATE TABLE answer (
 	answer_id          SERIAL PRIMARY KEY,
 	answer             VARCHAR NOT NULL UNIQUE,
+    answer_list
 	answer_description VARCHAR,
     answer_truth       BOOLEAN DEFAULT TRUE
 );

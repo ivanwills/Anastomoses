@@ -4,9 +4,10 @@
 
 CREATE TABLE question (
 	question_id          SERIAL PRIMARY KEY,
-	question             VARCHAR NOT NULL UNIQUE,
+	question             VARCHAR NOT NULL,
 	category_id          INTEGER REFERENCES category (category_id) NOT NULL,
-	question_description VARCHAR
+	question_description VARCHAR,
+    UNIQUE(question, category_id)
 );
 
 COMMENT ON TABLE  question                      IS '';

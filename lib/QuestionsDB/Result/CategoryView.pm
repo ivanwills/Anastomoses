@@ -45,9 +45,14 @@ __PACKAGE__->table("category_view");
   data_type: 'integer'
   is_nullable: 1
 
-=head2 path
+=head2 path_ids
 
   data_type: 'integer[]'
+  is_nullable: 1
+
+=head2 path
+
+  data_type: 'text'
   is_nullable: 1
 
 =head2 cycle
@@ -68,15 +73,17 @@ __PACKAGE__->add_columns(
   { data_type => "bigint", is_nullable => 1 },
   "depth",
   { data_type => "integer", is_nullable => 1 },
-  "path",
+  "path_ids",
   { data_type => "integer[]", is_nullable => 1 },
+  "path",
+  { data_type => "text", is_nullable => 1 },
   "cycle",
   { data_type => "boolean", is_nullable => 1 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-03 21:12:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NhhLhvs0uWwEtzG8zTRcXw
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-20 17:11:01
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sIGEQenk6bzX74BL50cbrA
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

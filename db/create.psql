@@ -3,4 +3,5 @@
 \i db/sql/question.sql
 \i db/sql/answer.sql
 \i db/sql/question_answer.sql
+\i db/sql/question_template.sql
 \i db/sql/category_view.sql

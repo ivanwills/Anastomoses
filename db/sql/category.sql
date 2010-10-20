@@ -4,8 +4,9 @@
 
 CREATE TABLE category (
 	category_id          SERIAL PRIMARY KEY,
-	category             VARCHAR NOT NULL UNIQUE,
-	parent_category_id   INTEGER REFERENCES category (category_id)
+	category             VARCHAR NOT NULL,
+	parent_category_id   INTEGER REFERENCES category (category_id),
+    UNIQUE(category, parent_category_id)
 );
 
 COMMENT ON TABLE  category                    IS '';
