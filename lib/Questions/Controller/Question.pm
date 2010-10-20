@@ -29,8 +29,11 @@ sub create_questions {
         { category_id => $category_id },
         { order_by => 'RANDOM()' },
     );
+    my $question_count = 0;
 
-    while ( my $question = $questions->next ) {
+    while ( ( my $question = $questions->next ) && $question_count < 20 ) {
+        $question_count++;
+        my %answers;
         push @questions, {
             question    => $question->question,
             question_id => $question->question_id,
@@ -40,6 +43,7 @@ sub create_questions {
                 answer_id => $question->answer_id,
             }],
         };
+        $answers{$question->answer_id} = 1;
 
         my $other = $qav->search(
             {
@@ -52,8 +56,12 @@ sub create_questions {
             },
         );
 
-        for ( 0 .. 3 ) {
-            my $answer = $other->next;
+        my $i = 0;
+        while ( ( my $answer = $other->next ) && $i < 4 ) {
+            next if $answers{$answer->answer};
+            $answers{$answer->answer} = 1;
+            $i++;
+
             push @{ $questions[-1]{answers} }, {
                 answer    => $answer->answer,
                 answer_id => $answer->answer_id,
