@@ -11,12 +11,18 @@
 
 .head {
 	width: 1014px;
-	height: 30px;
+	height: 75px;
 	margin: 0px;
 	background-color: rgb(32,32,128);
 	color: white;
 	font-family: sans-serif;
 	padding: 0 5px;
+}
+
+.head h1 {
+	padding-bottom: 3px;
+	margin-bottom: 3px;
+	color: #E4E4FF;
 }
 
 .head ul {
@@ -27,7 +33,7 @@
 .head ul li {
 	float: left;
 	border-right: 1px solid grey;
-	
+
 }
 .head ul li a {
 	text-decoration: none;
