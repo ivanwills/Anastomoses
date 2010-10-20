@@ -1,7 +1,7 @@
 
-\i db/sql/category.sql
-\i db/sql/question.sql
-\i db/sql/answer.sql
-\i db/sql/question_answer.sql
-\i db/sql/question_template.sql
-\i db/sql/category_view.sql
+\i sql/category.sql
+\i sql/question.sql
+\i sql/answer.sql
+\i sql/question_answer.sql
+\i sql/question_template.sql
+\i sql/category_view.sql

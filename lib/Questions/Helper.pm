@@ -99,14 +99,14 @@ sub get_path_from_region {
 }
 
 sub get_question {
-    my ( $db, $question, $category_id ) = @_;
+    my ( $db, $question, $category_id, $template_id ) = @_;
 
     my $q_rs = $db->resultset('Question');
     my $q = $q_rs->search({ question => $question, category_id => $category_id });
 
     return $q->first->question_id if $q && $q->first;
 
-    $q = $q_rs->new({ question => $question, category_id => $category_id });
+    $q = $q_rs->new({ question => $question, category_id => $category_id, question_template_id => $template_id });
     $q->insert;
 
     return $q->question_id;

@@ -270,10 +270,10 @@ sub get_region {
     my ($db, $parent_value, $subvalue) = @_;
 
     my $region_rs = $db->resultset('Region');
-    my $region    = $region_rs->search({region => $parent_value});
+    my $region    = $region_rs->search({region => ucfirst $parent_value});
 
     if ( !$region || !$region->first ) {
-        $region = $region_rs->new({region => $parent_value});
+        $region = $region_rs->new({region => ucfirst $parent_value});
         $region->insert;
     }
     else {
@@ -282,11 +282,11 @@ sub get_region {
 
     return $region->region_id if !$subvalue;
 
-    my $subregion = $region_rs->search({region => $subvalue, parent_region_id => $region->region_id});
+    my $subregion = $region_rs->search({region => ucfirst $subvalue, parent_region_id => $region->region_id});
 
     return $subregion->first->region_id if $subregion && $subregion->first && $subregion->first->region_id;
 
-    $subregion = $subregion->new({region => $subvalue, parent_region_id => $region->region_id});
+    $subregion = $subregion->new({region => ucfirst $subvalue, parent_region_id => $region->region_id});
     $subregion->insert();
 
     return $subregion->region_id;
@@ -295,10 +295,12 @@ sub get_region {
 sub refresh {
     my ($db) = @_;
 
+    my $q_rs  = $db->resultset('Question');
     my $qa_rs = $db->resultset('QuestionAnswer');
+    my $a_rs  = $db->resultset('Answer');
     my $tq_rs = $db->resultset('QuestionTemplate');
-    my $csv  = Text::CSV_XS->new({ binary => 1 });
-    my $file = file($0)->parent->parent->subdir('data')->file('template.csv');
+    my $csv   = Text::CSV_XS->new({ binary => 1 });
+    my $file  = file($0)->parent->parent->subdir('data')->file('template.csv');
 
     my $fh  = $file->openr;
     $csv->column_names( $csv->getline($fh) );
@@ -307,15 +309,48 @@ sub refresh {
         next if !$line->{question_table} || !$line->{question_column} || !$line->{answer_table} || !$line->{answer_column};
 
         my $new = {
-            question_template => $line->{question       },
+            question_template => $line->{question       } . '?',
             answer_template   => $line->{answer         },
             qtable            => $line->{question_table },
             qcolumn           => $line->{question_column},
             atable            => $line->{answer_table   },
             acolumn           => $line->{answer_column  },
         };
-        my $template = $tq_rs->new($new);
-        $template->insert();
+        my $template = $tq_rs->search({ question_template => $new->{question_template} });
+        if ( $template && $template->first ) {
+            $template = $template->first;
+
+            # clear out old questions/answers
+            $db->storage->dbh_do( sub {
+                my ($storage, $dbh) = @_;
+                $dbh->do(
+                    "DELETE FROM question_answer\n" .
+                    "   WHERE question_id IN (\n" .
+                    "       SELECT question_id\n" .
+                    "       FROM question\n" .
+                    "       WHERE question_template_id = ?\n" .
+                    "   )",
+                    undef,
+                    $template->question_template_id
+                );
+                $dbh->do(
+                    "DELETE FROM question\n" .
+                    "   WHERE question_template_id = ?",
+                    undef,
+                    $template->question_template_id
+                );
+                $dbh->do(
+                    "DELETE FROM answer\n" .
+                    "   WHERE answer_id NOT IN (\n" .
+                    "       SELECT answer_id FROM question_answer\n" .
+                    "   )",
+                );
+            });
+        }
+        else {
+            $template = $tq_rs->new($new);
+            $template->insert();
+        }
 
         if ( $new->{qtable} eq $new->{atable} ) {
             my $table_rs = $db->resultset($new->{qtable});

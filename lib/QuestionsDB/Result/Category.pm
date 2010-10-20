@@ -54,7 +54,10 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("category_id");
-__PACKAGE__->add_unique_constraint("category_category_key", ["category"]);
+__PACKAGE__->add_unique_constraint(
+  "category_category_parent_category_id_key",
+  ["category", "parent_category_id"],
+);
 
 =head1 RELATIONS
 
@@ -109,8 +112,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-03 21:12:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JvksXSHzajaUVexiAbs2sw
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-21 05:50:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Cg4gLPgFBbcKjtWrPHKZZw
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

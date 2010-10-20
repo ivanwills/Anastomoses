@@ -7,6 +7,7 @@ CREATE TABLE question (
 	question             VARCHAR NOT NULL,
 	category_id          INTEGER REFERENCES category (category_id) NOT NULL,
 	question_description VARCHAR,
+    question_template_id INTEGER REFERENCES question_template(question_template_id),
     UNIQUE(question, category_id)
 );
 

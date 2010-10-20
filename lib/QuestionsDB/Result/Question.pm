@@ -43,6 +43,12 @@ __PACKAGE__->table("question");
   data_type: 'character varying'
   is_nullable: 1
 
+=head2 question_template_id
+
+  data_type: 'integer'
+  is_foreign_key: 1
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -59,11 +65,36 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "question_description",
   { data_type => "character varying", is_nullable => 1 },
+  "question_template_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("question_id");
-__PACKAGE__->add_unique_constraint("question_question_key", ["question"]);
+__PACKAGE__->add_unique_constraint(
+  "question_question_category_id_key",
+  ["question", "category_id"],
+);
 
 =head1 RELATIONS
+
+=head2 question_template
+
+Type: belongs_to
+
+Related object: L<QuestionsDB::Result::QuestionTemplate>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "question_template",
+  "QuestionsDB::Result::QuestionTemplate",
+  { question_template_id => "question_template_id" },
+  {
+    is_deferrable => 1,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
+  },
+);
 
 =head2 category
 
@@ -96,8 +127,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-03 21:12:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nYLDHDP26hyGwK+YVLL9oQ
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-21 05:50:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:J8UmPEe3JxgPaKyWwtx9SQ
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

@@ -93,9 +93,26 @@ __PACKAGE__->add_unique_constraint(
   ["question_template"],
 );
 
+=head1 RELATIONS
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-20 17:11:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wFxtnLY3uhZbTOCYb/Y+ng
+=head2 questions
+
+Type: has_many
+
+Related object: L<QuestionsDB::Result::Question>
+
+=cut
+
+__PACKAGE__->has_many(
+  "questions",
+  "QuestionsDB::Result::Question",
+  { "foreign.question_template_id" => "self.question_template_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-21 05:50:15
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:GSZi987XUfl96jv1xPBPlg
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration
