@@ -296,8 +296,6 @@ sub refresh {
     my ($db) = @_;
 
     my $q_rs  = $db->resultset('Question');
-    my $qa_rs = $db->resultset('QuestionAnswer');
-    my $a_rs  = $db->resultset('Answer');
     my $tq_rs = $db->resultset('QuestionTemplate');
     my $csv   = Text::CSV_XS->new({ binary => 1 });
     my $file  = file($0)->parent->parent->subdir('data')->file('template.csv');
@@ -321,73 +319,93 @@ sub refresh {
             $template = $template->first;
 
             # clear out old questions/answers
-            $db->storage->dbh_do( sub {
-                my ($storage, $dbh) = @_;
-                $dbh->do(
-                    "DELETE FROM question_answer\n" .
-                    "   WHERE question_id IN (\n" .
-                    "       SELECT question_id\n" .
-                    "       FROM question\n" .
-                    "       WHERE question_template_id = ?\n" .
-                    "   )",
-                    undef,
-                    $template->question_template_id
-                );
-                $dbh->do(
-                    "DELETE FROM question\n" .
-                    "   WHERE question_template_id = ?",
-                    undef,
-                    $template->question_template_id
-                );
-                $dbh->do(
-                    "DELETE FROM answer\n" .
-                    "   WHERE answer_id NOT IN (\n" .
-                    "       SELECT answer_id FROM question_answer\n" .
-                    "   )",
-                );
-            });
+            clear_template($db, $template);
         }
         else {
             $template = $tq_rs->new($new);
             $template->insert();
         }
 
-        if ( $new->{qtable} eq $new->{atable} ) {
-            my $table_rs = $db->resultset($new->{qtable});
-            my $results = $table_rs->search();
+        create_questions($db, $template);
+    }
+}
 
-            while ( my $row = $results->next ) {
-                my $qcol  = $row->get_column($new->{qcolumn});
-                my $acol  = $row->get_column($new->{acolumn});
-                my $templ = $new->{question_template};
-                my $ans   = $new->{answer_template  };
-                my $path  = Question::Helper::get_path_from_region($db, $row->region_id, '/Human/Anatomy/');
-                my $cat   = Question::Helper::get_category_from_path($db, $path, 1);
-                $templ =~ s/%qcol%/$qcol/gxms;
-                $templ =~ s/%acol%/$acol/gxms;
-                $ans   =~ s/%qcol%/$qcol/gxms;
-                $ans   =~ s/%acol%/$acol/gxms;
-                print "Q: $templ\n";
-                print "A: $ans\n";
-                print "cat: $path ($cat)\n";
+sub create_questions {
+    my ( $db, $template ) = @_;
+    my $qa_rs = $db->resultset('QuestionAnswer');
+    my $a_rs  = $db->resultset('Answer');
 
-                my $question_id = Question::Helper::get_question($db, $templ, $cat);
-                my $answer_id   = Question::Helper::get_answer($db, $ans);
+    my $table_rs = $db->resultset($template->qtable);
+    my $joins
+        = $template->join_table                  ? { join => { $template->join_table => $template->atable } }
+        : $template->qtable ne $template->atable ? { join => [ $template->atable ] }
+        :                                          {};
+    my $results = $table_rs->search( {}, $join );
 
-                $db->svp_begin('qa');
-                eval {
-                    my $qa = $qa_rs->new({ question_id => $question_id, answer_id => $answer_id });
-                    $qa->insert;
-                };
-                if ($EVAL_ERROR) {
-                    $db->svp_rollback('qa');
-                }
-                else {
-                    $db->svp_release('qa');
-                }
-            }
+    while ( my $row = $results->next ) {
+        my $qcol  = $row->get_column($template->qcolumn);
+        my $acol  = $row->get_column($template->acolumn);
+        my $templ = $template->question_template;
+        my $ans   = $template->answer_template  ;
+        my $path  = Question::Helper::get_path_from_region($db, $row->region_id, '/Human/Anatomy/');
+        my $cat   = Question::Helper::get_category_from_path($db, $path, 1);
+        $templ =~ s/%qcol%/$qcol/gxms;
+        $templ =~ s/%acol%/$acol/gxms;
+        $ans   =~ s/%qcol%/$qcol/gxms;
+        $ans   =~ s/%acol%/$acol/gxms;
+        if ( $option{verbose} ) {
+            print "Q: $templ\n";
+            print "A: $ans\t";
+            print "cat: $path ($cat)\n";
+        }
+
+        my $question_id = Question::Helper::get_question($db, $templ, $cat);
+        my $answer_id   = Question::Helper::get_answer($db, $ans);
+
+        $db->svp_begin('qa');
+        eval {
+            my $qa = $qa_rs->new({ question_id => $question_id, answer_id => $answer_id });
+            $qa->insert;
+        };
+        if ($EVAL_ERROR) {
+            $db->svp_rollback('qa');
+        }
+        else {
+            $db->svp_release('qa');
         }
     }
+}
+
+sub clear_template {
+    my ( $db, $template ) = @_;
+
+    $db->storage->dbh_do( sub {
+        my ($storage, $dbh) = @_;
+        $dbh->do(
+            "DELETE FROM question_answer\n" .
+            "   WHERE question_id IN (\n" .
+            "       SELECT question_id\n" .
+            "       FROM question\n" .
+            "       WHERE question_template_id = ?\n" .
+            "   )",
+            undef,
+            $template->question_template_id
+        );
+        $dbh->do(
+            "DELETE FROM question\n" .
+            "   WHERE question_template_id = ?",
+            undef,
+            $template->question_template_id
+        );
+        $dbh->do(
+            "DELETE FROM answer\n" .
+            "   WHERE answer_id NOT IN (\n" .
+            "       SELECT answer_id FROM question_answer\n" .
+            "   )",
+        );
+    });
+
+    return;
 }
 
 __DATA__
