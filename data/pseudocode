@@ -1,0 +1,158 @@
+CREATE TABLE muscle (
+    muscle_id    SERIAL PRIMARY KEY,
+    joint_id     INTEGER REFERENCES (),
+    nerve_id     INTEGER REFERENCES (),
+    movement_id  INTEGER REFERENCES (),
+    muscle       varchar NOT NULL,
+    muscle_group varchar,
+    origin       varchar,
+    insertion    varchar,
+    action       varchar,
+    region_id    INTEGER REFERENCES (),
+    subregion_id INTEGER REFERENCES ()
+);
+/*************************
+muscle questions
+Q1 		What is the origin of %muscle%	%origin%
+muscle answer
+SELECT origin FROM muscle WHERE muscle = '%muscle%'; --correct answer
+SELECT origin FROM muscle WHERE compartment IN (select 				compartment from muscle where muscle=%muscle%)
+IF count compartment < 3 then select insertion from muscle where muscle=%muscle%
+ELSIF totalcount < 5 then...
+
+Q2		What is the insertion of %muscle%	%insertion%
+same procedure as above but swap origin for insertion etc..
+
+Q3		What muscle inserts at %insertion%	%muscle%
+select muscle from muscle where insertion=%insertion%
+-- this may return multiple values so pick one at random for the correct --answer and excude any of the others from being provided as an answer
+
+
+Q4		What muscle has an origin at %origin%	%muscle%
+
+as for Q3 but swap insertion for origin
+
+Q5		What is the innervation of %muscle%
+correct answer
+select nerve.nerve
+from nerve, muscle
+where nerve.nerve_id=muscle.nerve_id
+and muscle=%muscle%
+
+incorrect answers
+select nerve from nerve
+where nerve_id in (select nerve_id from muscle where region = (select region from muscle where muscle=%muscle%))
+
+Q6	What muscles lie in %compartment%?
+select muscle from muscles where compartment=%compartment%
+select muscle from muscles where region in (select region from muscle where compartment=%compartment%)
+group by compartment
+
+**********************************************/
+
+CREATE TABLE movement (
+    movement_id SERIAL PRIMARY KEY,
+    movement    varchar
+);
+
+CREATE TABLE nerve (
+    nerve_id    SERIAL PRIMARY KEY,
+    nerve       varchar,
+    parentnerve INTEGER REFERENCES ()_id
+);
+
+CREATE TABLE joint (
+    joint_id         SERIAL PRIMARY KEY,
+    nerve_id         INTEGER REFERENCES (),
+    movement_id      INTEGER REFERENCES (),
+    boney_feature_id INTEGER REFERENCES (),
+    joint            varchar,
+    joint_class      varchar,
+    joint_type       varchar
+);
+/***********************************************
+Q1 	What movements can %joint% perform?
+correct answer
+select movement from movement where movement_id in
+	(select movement_id from joint
+			where joint.movement_id=movement.movement_id
+			and joint = %joint%)
+incorrect answers
+select random movements from movement where they don't equal each other or the correct answer.
+
+Q2	What joint is %bone||ligament% associated with?
+
+
+
+
+
+************************************************/
+CREATE TABLE bone (
+    bone_id             SERIAL PRIMARY KEY,
+    bone_group          varchar,
+    subregion_id        INTEGER REFERENCES (),
+    joint_id            INTEGER REFERENCES (),
+    articulation        varchar,
+    bone                varchar,
+    muscle_insertions   varchar
+);
+
+CREATE TABLE feature (
+    feature_id         SERIAL PRIMARY KEY,
+    feature_type       varchar NOT NULL CONSTRAINT
+        feature_type_c IN (
+            'anatomical area',
+            'ligament',
+            'boney feature',
+            'sinus'
+            'retinaculum',
+            'aponeurosis',
+            'foramen',
+            'crease',
+            'extensor hood'
+        ),
+    feature_subtype	varchar	CONSTRAINT
+        featuresubtype_c IN (
+            'fossa'
+            'process'
+            'facet'
+            'tubercle'
+            'tuberosity'
+            'anastomoses',
+            'notch',
+            'labrum'
+        ),
+    feature            varchar NOT NULL,
+    feature_desc       varchar NOT NULL,
+    feature_loc        varchar NOT NULL,
+    feature_insertion  varchar,
+    feature_origin     varchar,
+    subregion_id       INTEGER REFERENCES () NOT NULL,
+    bone_id            INTEGER REFERENCES (),
+    nerve_id           INTEGER REFERENCES (),
+    joint_id           INTEGER REFERENCES (),
+    lateral_border     varchar,
+    medial_border      varchar,
+    floor              varchar,
+    apex               varchar,
+    base               varchar
+);
+
+CREATE TABLE region (
+    region_id    SERIAL PRIMARY KEY,
+    region       varchar,
+    subregion_id INTEGER REFERENCES (),
+    subregion    varchar
+);
+
+CREATE TABLE vascular (
+    vascular            SERIAL PRIMARY KEY,
+    vascular_type       varchar CONSTRAINT IN ('vein', 'artery'),
+    vascular_name       varchar NOT NULL,
+    parent_vascular_id  INTEGER REFERENCES (),
+    region_id           INTEGER REFERENCES () NOT NULL,
+    subregion_id        INTEGER REFERENCES (),
+);
+
+
+
