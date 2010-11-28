@@ -69,10 +69,7 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("question_id");
-__PACKAGE__->add_unique_constraint(
-  "question_question_category_id_key",
-  ["question", "category_id"],
-);
+__PACKAGE__->add_unique_constraint("question_question_key", ["question", "category_id"]);
 
 =head1 RELATIONS
 
@@ -127,8 +124,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-21 05:50:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:J8UmPEe3JxgPaKyWwtx9SQ
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-11-29 06:06:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:utXYOTtUqLvCaZuModFWmg
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

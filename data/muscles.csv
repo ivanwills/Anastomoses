@@ -1,4 +1,3 @@
-,,,,,,,,,,,"movements",,,,,,,,,,,,,,,,,
 "Muscle group","compartment","region","subregion","joint","muscle","Head","origin","insertion","innervation","Action","Flexion","extension","abduction","adduction","medial rotation","Lateral rotation","circumduction","pronation","supination","protraction","retraction","opposition","rotation","vertical plane","A-p","elevate","depress","anterior tilt"
 "pectoral","anterior axioappendicular","torso","chest","glenohumeral","Pectoralis major","clavicular","anterior surface of medial half of clavicle","Lateral lip of intertubercular sulcus of humerus","medial pectoral",,1,,,1,1,,,,,,,,,,,,,
 "pectoral","anterior axioappendicular","torso","chest","glenohumeral","Pectoralis major","clavicular","anterior surface of medial half of clavicle","Lateral lip of intertubercular sulcus of humerus","lateral pectoral",,,,,,,,,,,,,,,,,,,
@@ -10,9 +9,9 @@
 ,"anterior axioappendicular","torso","chest",,"subclavius",,"first rib at junction between rib and costal cartilage","groove on inferior surface of middle third of clavicle","nerve to subclavius",,,,,,,,,,,,,,,,,,,
 ,"superficial posterior axioappendicular","torso","back","glenohumeral","Latissimus dorsi",,"Spinous processes of lower 6 thoracic vertebrae and interspinous ligs, thoracolumber fascia of the lumbar vertebrae and interspinous ligs, iliac crest, lower 3-4 ribs","floor of intertubercular sulcus","Thoracodorsal",,,1,,1,,,,,,,,,,,,,,
 ,"scapulohumeral","torso",,"glenohumeral","Deltoid",,"inferior edge of spine of scapula, acromion, anterior border of lateral third of clavicle","deltoid tuberosity of humerus
-","axillary 
+","axillary
 ",,1,1,1,,1,1,,,,,,,,,,,,
-"rotator cuff","scapulohumeral","torso","back","glenohumeral","Supraspinatus",,"supraspinous fossa","superior facet of greater tubercle of the humerus","Suprascapular 
+"rotator cuff","scapulohumeral","torso","back","glenohumeral","Supraspinatus",,"supraspinous fossa","superior facet of greater tubercle of the humerus","Suprascapular
 ",,,,1,,,,,,,,,,,,,,,
 "rotator cuff","scapulohumeral","torso","back","glenohumeral","Infraspinatus",,"infraspinous fossa","middle facet of greater tubercle of humerus","Suprascapular  ",,,,,,,1,,,,,,,,,,,,
 ,"scapulohumeral","torso","back","glenohumeral","Teres major",,"posterior surface of inferior angle of scapula","medial lip of humeral intertubercular sulcus","lower subscapular","medial rotation and extension of the arm at the glenohumeral joint",,1,,,1,,,,,,,,,,,,,
@@ -27,7 +26,7 @@
 "Triceps brachii","posterior arm","upper limb","arm","elbow ","Triceps brachii","lateral","posterior surface of humerus superior the radial groove","olecranon","radial",,,,,,,,,,,,,,,,,,,
 ,"anterior arm","upper limb","arm","elbow ","Brachialis",,"anterior surface of humerus","ulnar tuberosity","Musculocutaneous","flexor of forearm at elbow",1,,,,,,,,,,,,,,,,,
 ,"anterior axioappendicular","torso",,"scapulthoracic","Serratus anterior",,"lateral surfaces of upper 8 to 9 ribs and deep fascia overlying the related intercostal spaces","costal surface on medial border of scapula","long thoracic ","protraction and rotation of scapula",,,,,,,,,,1,,,1,,,,,
-,"deep posterior axioappendicular","torso","back","scapula","Levator scapulae",,"Transverse processes C1-4","medial border of scapula from superior angle to root of spine","Dorsal scapular 
+,"deep posterior axioappendicular","torso","back","scapula","Levator scapulae",,"Transverse processes C1-4","medial border of scapula from superior angle to root of spine","Dorsal scapular
 ","elevates the scapula",,,,,,,,,,,,,,,,1,,
 ,"deep posterior axioappendicular","torso","back","scapula","Levator scapulae",,"Transverse processes C1-3","medial border of scapula from superior angle to root of spine","c3","elevates the scapula",,,,,,,,,,,,,,,,,,
 ,"deep posterior axioappendicular","torso","back","scapula","Levator scapulae",,"Transverse processes C1-2","medial border of scapula from superior angle to root of spine","c4","elevates the scapula",,,,,,,,,,,,,,,,,,

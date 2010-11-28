@@ -49,6 +49,12 @@ __PACKAGE__->table("muscle");
   data_type: 'character varying'
   is_nullable: 0
 
+=head2 muscle_head
+
+  data_type: 'character varying'
+  is_nullable: 1
+  size: 255
+
 =head2 muscle_group
 
   data_type: 'character varying'
@@ -93,6 +99,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "muscle",
   { data_type => "character varying", is_nullable => 0 },
+  "muscle_head",
+  { data_type => "character varying", is_nullable => 1, size => 255 },
   "muscle_group",
   { data_type => "character varying", is_nullable => 1 },
   "origin",
@@ -184,8 +192,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-18 07:53:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:W8agdggu4dx+Ugc0QzvwFw
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-11-29 06:06:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2dVyEY0QO6lYYycNtx/b6g
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration
