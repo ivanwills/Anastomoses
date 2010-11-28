@@ -1,0 +1,24 @@
+"Region","subregion","joint"
+,,
+"upper limb","arm","glenohumeral"
+"upper limb","forearm","elbow"
+"upper limb","arm","elbow"
+"upper limb","wrist",
+"upper limb","hand",
+"upper limb","shoulder",
+"upper limb","fingers",
+"upper limb","forearm","wrist"
+"upper limb","hand","wrist"
+"lower limb","thigh","hip"
+"lower limb",,
+"lower limb","leg","hip"
+"lower limb","leg","ankle"
+"lower limb","foot","ankle"
+"lower limb","toes",
+"lower limb",,
+"pelvis",,
+"pelvis",,
+"pelvis",,
+"pelvis",,
+"pelvis",,
+"torso",,

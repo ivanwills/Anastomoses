@@ -1,8 +1,8 @@
 "question","answer","question_table","question_column","answer_table","answer_column","join_table","correct_answers","incorrect_answers"
 "What is the origin of %qcol%","%acol%","Muscle","muscle","Muscle","origin",,"SELECT muscle AS qcol, origin AS acol FROM muscle;","SELECT origin AS acol FROM muscle WHERE muscle <> 'qcol' ORDER BY RANDOM() LIMIT 3;"
 "What is the insertion of %qcol%","%acol%","Muscle","muscle","Muscle","insertion",,,
-"What muscle inserts at %qcol%","%acol%","Muscle","insertion","Muscle","muscle",,,
-"What muscle has an origin at %qcol%","%acol%","Muscle","origin","Muscle","muscle",,,
+"Which muscle inserts at the %qcol%","%acol%","Muscle","insertion","Muscle","muscle",,,
+"Which muscle's origin is the %qcol%","%acol%","Muscle","origin","Muscle","muscle",,,
 "What nerve(s) innervate %qcol%","%acol%","Muscle","muscle","nerve","nerve",,"SELECT muscle AS qcol, nerve AS acol FROM muscle q JOIN nerve a USING(nerve_id);",
 "What muscles lie in the %qcol% compartment","%acol%","Muscle","compartment","Muscle","muscle",,,
 "What movements can %qcol% perform","%acol%","Muscle","muscle","Movement","JOIN(movement)","MuscleMovement","SELECT muscle AS qcol, VJOIN(', ', movement) FROM muscle JOIN muscle_movement USING(muscle_id) JOIN movement USING(movement_id);",
