@@ -11,6 +11,7 @@ CREATE TABLE muscle (
             'anterior axioappendicular',
             'anterior intermediate forearm',
             'anterior superficial forearm',
+            'anterior deep forearm',
             'anterior thigh',
             'deep anterior forearm',
             'deep posterior axioappendicular',

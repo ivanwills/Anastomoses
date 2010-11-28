@@ -4,4 +4,5 @@
 \i sql/question.sql
 \i sql/answer.sql
 \i sql/question_answer.sql
+\i sql/question_answer_view.sql
 \i sql/category_view.sql
