@@ -342,17 +342,23 @@ sub create_questions {
         :                                          {};
     my $results = $table_rs->search( {}, $join );
 
+    QUESTION:
     while ( my $row = $results->next ) {
         my $qcol  = $row->get_column($template->qcolumn);
         my $acol  = $row->get_column($template->acolumn);
+
+        next QUESTION if !$acol || !$qcol || $acol eq $qcol;
+
         my $templ = $template->question_template;
         my $ans   = $template->answer_template  ;
         my $path  = Question::Helper::get_path_from_region($db, $row->region_id, '/Human/Anatomy/');
         my $cat   = Question::Helper::get_category_from_path($db, $path, 1);
+
         $templ =~ s/%qcol%/$qcol/gxms;
         $templ =~ s/%acol%/$acol/gxms;
         $ans   =~ s/%qcol%/$qcol/gxms;
         $ans   =~ s/%acol%/$acol/gxms;
+
         if ( $option{verbose} ) {
             print "Q: $templ\n";
             print "A: $ans\t";
