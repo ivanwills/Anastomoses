@@ -326,7 +326,7 @@ sub refresh {
             $template->insert();
         }
 
-        create_questions($db, $template);
+        eval { create_questions($db, $template) };
     }
 }
 
@@ -344,8 +344,8 @@ sub create_questions {
 
     QUESTION:
     while ( my $row = $results->next ) {
-        my $qcol  = $row->get_column($template->qcolumn);
-        my $acol  = $row->get_column($template->acolumn);
+        my $qcol  = eval { $row->get_column($template->qcolumn) };
+        my $acol  = eval { $row->get_column($template->acolumn) };
 
         next QUESTION if !$acol || !$qcol || $acol eq $qcol;
 
