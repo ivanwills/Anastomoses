@@ -340,7 +340,7 @@ sub create_questions {
         = $template->join_table                  ? { join => { $template->join_table => $template->atable } }
         : $template->qtable ne $template->atable ? { join => [ $template->atable ] }
         :                                          {};
-    my $results = $table_rs->search( {}, $join );
+    my $results = $table_rs->search( {}, $joins );
 
     QUESTION:
     while ( my $row = $results->next ) {
@@ -429,7 +429,9 @@ This documentation refers to anatomy-import.pl version 0.1.
    anatomy-import.pl [option]
 
  OPTIONS:
-  -o --other         other option
+  -i import          Import the data into the various tables
+  -r refresh         Refresh/create questions baised on imported data
+  -a all             Import and refresh
 
   -v --verbose       Show more detailed option
      --version       Prints the version information
