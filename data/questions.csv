@@ -1,0 +1,13 @@
+"Question","Answer"
+"What is the origin of %muscle%","%origin%"
+"What is the insertion of %muscle%","%insertion%"
+"What muscle inserts at %insertion%","%muscle%"
+"What muscle has an origin at %origin%","%muscle%"
+"What nerve(s) innervate %muscle%","%innervation%"
+"What muscles lie in the %compartment% compartment","%muscle%"
+"What movements can %muscle% perform","%movements%"
+"The %muscle% acts across which joint?","%joint%"
+"The %ligament% is associated with which joint","%joint%"
+"What is the range of movement of %joint%","%movements%"
+"What muscles are responsible for %movement% of bone",
+"Name the articular surfaces of %joint%","%articulation%"
