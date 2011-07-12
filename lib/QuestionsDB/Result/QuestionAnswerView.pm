@@ -45,6 +45,11 @@ __PACKAGE__->table("question_answer_view");
   data_type: 'character varying'
   is_nullable: 1
 
+=head2 question_template_id
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =head2 question_answer_description
 
   data_type: 'character varying'
@@ -60,6 +65,11 @@ __PACKAGE__->table("question_answer_view");
   data_type: 'character varying'
   is_nullable: 1
 
+=head2 answer_truth
+
+  data_type: 'boolean'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -73,17 +83,21 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_nullable => 1 },
   "question_description",
   { data_type => "character varying", is_nullable => 1 },
+  "question_template_id",
+  { data_type => "integer", is_nullable => 1 },
   "question_answer_description",
   { data_type => "character varying", is_nullable => 1 },
   "answer",
   { data_type => "character varying", is_nullable => 1 },
   "answer_description",
   { data_type => "character varying", is_nullable => 1 },
+  "answer_truth",
+  { data_type => "boolean", is_nullable => 1 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-04 20:18:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nPE/wjeYiVVhOJMldXIFwA
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2011-07-12 20:34:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:HtDel1Fh0rF2UvWGtVkKHg
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

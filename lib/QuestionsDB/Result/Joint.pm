@@ -27,13 +27,7 @@ __PACKAGE__->table("joint");
   is_nullable: 0
   sequence: 'joint_joint_id_seq'
 
-=head2 nerve_id
-
-  data_type: 'integer'
-  is_foreign_key: 1
-  is_nullable: 1
-
-=head2 feature_id
+=head2 neurovascular_id
 
   data_type: 'integer'
   is_foreign_key: 1
@@ -64,9 +58,7 @@ __PACKAGE__->add_columns(
     is_nullable       => 0,
     sequence          => "joint_joint_id_seq",
   },
-  "nerve_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
-  "feature_id",
+  "neurovascular_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "joint",
   { data_type => "character varying", is_nullable => 1 },
@@ -94,59 +86,39 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 features
+=head2 neurovascular
+
+Type: belongs_to
+
+Related object: L<QuestionsDB::Result::Neurovascular>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "neurovascular",
+  "QuestionsDB::Result::Neurovascular",
+  { neurovascular_id => "neurovascular_id" },
+  {
+    is_deferrable => 1,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
+  },
+);
+
+=head2 joint_features
 
 Type: has_many
 
-Related object: L<QuestionsDB::Result::Feature>
+Related object: L<QuestionsDB::Result::JointFeature>
 
 =cut
 
 __PACKAGE__->has_many(
-  "features",
-  "QuestionsDB::Result::Feature",
+  "joint_features",
+  "QuestionsDB::Result::JointFeature",
   { "foreign.joint_id" => "self.joint_id" },
   { cascade_copy => 0, cascade_delete => 0 },
-);
-
-=head2 feature
-
-Type: belongs_to
-
-Related object: L<QuestionsDB::Result::Feature>
-
-=cut
-
-__PACKAGE__->belongs_to(
-  "feature",
-  "QuestionsDB::Result::Feature",
-  { feature_id => "feature_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
-);
-
-=head2 nerve
-
-Type: belongs_to
-
-Related object: L<QuestionsDB::Result::Nerve>
-
-=cut
-
-__PACKAGE__->belongs_to(
-  "nerve",
-  "QuestionsDB::Result::Nerve",
-  { nerve_id => "nerve_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
 );
 
 =head2 joint_movements
@@ -180,8 +152,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-19 20:04:19
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PDtNL1dyfykD3LZDzHXiVg
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2011-07-12 20:34:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:iqPNBuK9NiXNDtnFgl9Swg
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

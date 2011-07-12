@@ -38,7 +38,7 @@ __PACKAGE__->table("muscle");
   is_foreign_key: 1
   is_nullable: 1
 
-=head2 nerve_id
+=head2 movement_id
 
   data_type: 'integer'
   is_foreign_key: 1
@@ -49,28 +49,22 @@ __PACKAGE__->table("muscle");
   data_type: 'character varying'
   is_nullable: 0
 
-=head2 muscle_head
-
-  data_type: 'character varying'
-  is_nullable: 1
-  size: 255
-
 =head2 muscle_group
 
   data_type: 'character varying'
   is_nullable: 1
 
-=head2 origin
+=head2 muscle_origin
 
   data_type: 'character varying'
   is_nullable: 1
 
-=head2 insertion
+=head2 muscle_insertion
 
   data_type: 'character varying'
   is_nullable: 1
 
-=head2 action
+=head2 muscle_action
 
   data_type: 'character varying'
   is_nullable: 1
@@ -95,19 +89,17 @@ __PACKAGE__->add_columns(
   { data_type => "character varying", is_nullable => 1 },
   "joint_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
-  "nerve_id",
+  "movement_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "muscle",
   { data_type => "character varying", is_nullable => 0 },
-  "muscle_head",
-  { data_type => "character varying", is_nullable => 1, size => 255 },
   "muscle_group",
   { data_type => "character varying", is_nullable => 1 },
-  "origin",
+  "muscle_origin",
   { data_type => "character varying", is_nullable => 1 },
-  "insertion",
+  "muscle_insertion",
   { data_type => "character varying", is_nullable => 1 },
-  "action",
+  "muscle_action",
   { data_type => "character varying", is_nullable => 1 },
   "region_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
@@ -115,6 +107,26 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("muscle_id");
 
 =head1 RELATIONS
+
+=head2 movement
+
+Type: belongs_to
+
+Related object: L<QuestionsDB::Result::Movement>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "movement",
+  "QuestionsDB::Result::Movement",
+  { movement_id => "movement_id" },
+  {
+    is_deferrable => 1,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
+  },
+);
 
 =head2 joint
 
@@ -128,26 +140,6 @@ __PACKAGE__->belongs_to(
   "joint",
   "QuestionsDB::Result::Joint",
   { joint_id => "joint_id" },
-  {
-    is_deferrable => 1,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
-);
-
-=head2 nerve
-
-Type: belongs_to
-
-Related object: L<QuestionsDB::Result::Nerve>
-
-=cut
-
-__PACKAGE__->belongs_to(
-  "nerve",
-  "QuestionsDB::Result::Nerve",
-  { nerve_id => "nerve_id" },
   {
     is_deferrable => 1,
     join_type     => "LEFT",
@@ -176,24 +168,24 @@ __PACKAGE__->belongs_to(
   },
 );
 
-=head2 muscle_movements
+=head2 muscle_neurovasculars
 
 Type: has_many
 
-Related object: L<QuestionsDB::Result::MuscleMovement>
+Related object: L<QuestionsDB::Result::MuscleNeurovascular>
 
 =cut
 
 __PACKAGE__->has_many(
-  "muscle_movements",
-  "QuestionsDB::Result::MuscleMovement",
+  "muscle_neurovasculars",
+  "QuestionsDB::Result::MuscleNeurovascular",
   { "foreign.muscle_id" => "self.muscle_id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-11-29 06:06:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2dVyEY0QO6lYYycNtx/b6g
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2011-07-12 20:34:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:X6KY7QkWVsenzbgE/ENCxw
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

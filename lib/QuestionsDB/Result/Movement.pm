@@ -64,24 +64,24 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 muscle_movements
+=head2 muscles
 
 Type: has_many
 
-Related object: L<QuestionsDB::Result::MuscleMovement>
+Related object: L<QuestionsDB::Result::Muscle>
 
 =cut
 
 __PACKAGE__->has_many(
-  "muscle_movements",
-  "QuestionsDB::Result::MuscleMovement",
+  "muscles",
+  "QuestionsDB::Result::Muscle",
   { "foreign.movement_id" => "self.movement_id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-19 20:04:19
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gWyScKRAnHRBAZI7OIadpQ
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2011-07-12 20:34:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pqmHVQ70ghjxCAbjLY6niw
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

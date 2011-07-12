@@ -32,13 +32,13 @@ __PACKAGE__->table("bone");
   data_type: 'character varying'
   is_nullable: 1
 
-=head2 region_id
+=head2 joint_id
 
   data_type: 'integer'
   is_foreign_key: 1
   is_nullable: 1
 
-=head2 joint_id
+=head2 region_id
 
   data_type: 'integer'
   is_foreign_key: 1
@@ -71,9 +71,9 @@ __PACKAGE__->add_columns(
   },
   "bone_group",
   { data_type => "character varying", is_nullable => 1 },
-  "region_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "joint_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  "region_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "articulation",
   { data_type => "character varying", is_nullable => 1 },
@@ -142,8 +142,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-17 19:59:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bE/+v9aiz5yoOt5aJXVwTg
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2011-07-12 20:34:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CAPPsSEmVDaOEOxOnVmsPA
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration

@@ -102,6 +102,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 neurovasculars
+
+Type: has_many
+
+Related object: L<QuestionsDB::Result::Neurovascular>
+
+=cut
+
+__PACKAGE__->has_many(
+  "neurovasculars",
+  "QuestionsDB::Result::Neurovascular",
+  { "foreign.region_id" => "self.region_id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 parent_region
 
 Type: belongs_to
@@ -137,24 +152,9 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 vasculars
 
-Type: has_many
-
-Related object: L<QuestionsDB::Result::Vascular>
-
-=cut
-
-__PACKAGE__->has_many(
-  "vasculars",
-  "QuestionsDB::Result::Vascular",
-  { "foreign.region_id" => "self.region_id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
-
-# Created by DBIx::Class::Schema::Loader v0.06001 @ 2010-10-17 21:36:43
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MUHWtcyKTSDlv/oQ4jFKYA
+# Created by DBIx::Class::Schema::Loader v0.06001 @ 2011-07-12 20:34:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gMD7kYiGRYIZ0sT9NqLC/Q
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration
