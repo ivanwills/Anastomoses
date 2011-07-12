@@ -5,8 +5,8 @@
 CREATE TABLE bone (
     bone_id             SERIAL PRIMARY KEY,
     bone_group          varchar,
-    region_id           INTEGER REFERENCES region(region_id),
     joint_id            INTEGER REFERENCES joint (joint_id ),
+    region_id           INTEGER REFERENCES region(region_id),
     articulation        varchar,
     bone                varchar,
     muscle_insertions   varchar

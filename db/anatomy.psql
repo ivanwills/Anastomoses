@@ -2,13 +2,14 @@
 -- CREATE SCHEMA anatomy;
 
 \i sql/anatomy/movement.sql
-\i sql/anatomy/nerve.sql
 \i sql/anatomy/region.sql
-\i sql/anatomy/joint.sql           --                      nerve, movement, feature
-\i sql/anatomy/joint_movement.sql  -- joint                       movement
-\i sql/anatomy/muscle.sql          -- joint, region,       nerve
-\i sql/anatomy/muscle_movement.sql --                             movement, muscle
-\i sql/anatomy/bone.sql            -- joint, region
-\i sql/anatomy/feature.sql         -- joint, region, bone, nerve
-\i sql/anatomy/vascular.sql        --        region
+\i sql/anatomy/neurovascular.sql
+\i sql/anatomy/joint.sql                --                      neurovascular, movement, feature
+\i sql/anatomy/bone.sql                 -- joint, region
+\i sql/anatomy/feature.sql              -- joint, region, bone, neurovascular
+\i sql/anatomy/muscle.sql               -- joint, region,       neurovascular
+\i sql/anatomy/muscle_head.sql          --                bone,                          muscle
+\i sql/anatomy/joint_movement.sql       -- joint                               movement
+\i sql/anatomy/joint_feature.sql        -- joint                                         feature
+\i sql/anatomy/muscle_neurovascular.sql --                    neurovascular,             muscle
 
